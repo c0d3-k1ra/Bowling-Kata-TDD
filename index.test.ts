@@ -53,6 +53,13 @@ describe("Bowling Kata", () => {
 
     expect(game.getScore()).toBe(30);
   });
+
+  test('All Strikes', () => {
+    const game = new BowlingGame();
+    rollContinouslyFor(game, 10, 12); //12 rolls because 2 bonus rolls
+
+    expect(game.getScore()).toBe(300);
+  });
 });
 
 
