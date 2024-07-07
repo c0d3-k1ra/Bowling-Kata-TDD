@@ -8,7 +8,7 @@ class BowlingGame {
 
   getScore(): number {
     let score = 0;
-    for (let roll = 0; roll < 20; roll++) {
+    for (let roll = 0; roll < this.currentRoll; roll++) {
       score += this.rolls[roll];
     }
     return score;
