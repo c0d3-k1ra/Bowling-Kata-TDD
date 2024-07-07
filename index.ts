@@ -12,12 +12,16 @@ class BowlingGame {
     let score = 0;
     let rollIndex = 0;
     for (let frame = 0; frame < 10; frame++) {
-      if(this.isSpare(rollIndex)) {
+      if(this.isStrike(rollIndex)) {
+        score += 10 + this.bonusForStrike(rollIndex);
+        rollIndex++;
+      } else if(this.isSpare(rollIndex)) {
         score += 10 + this.bonusForSpare(rollIndex);
+        rollIndex += 2;
       } else {
-        score += this.rolls[rollIndex] + this.rolls[rollIndex+1]
+        score += this.rolls[rollIndex] + this.rolls[rollIndex+1];
+        rollIndex += 2;
       }
-      rollIndex += 2;
     }
     return score;
   }
@@ -28,6 +32,14 @@ class BowlingGame {
 
   private bonusForSpare(rollIndex: number): number {
     return this.rolls[rollIndex + 2];
+  }
+
+  private isStrike(rollIndex: number): boolean {
+    return this.rolls[rollIndex] === 10;
+  }
+
+  private bonusForStrike(rollIndex: number): number {
+    return this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
   }
 }
 

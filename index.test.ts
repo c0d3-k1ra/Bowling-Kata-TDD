@@ -10,6 +10,10 @@ const rollASpare = (game: BowlingGame) => {
   rollContinouslyFor(game, 5, 2);
 }
 
+const rollAStrike = (game: BowlingGame) => {
+  game.roll(10);
+}
+
 describe("Bowling Kata", () => {
   test('Gutter game should score 0', () => {
     const game = new BowlingGame();
@@ -40,6 +44,14 @@ describe("Bowling Kata", () => {
     rollContinouslyFor(game, 5, 1);
     
     expect(game.getScore()).toBe(150);
+  });
+
+  test('1 strike', () => {
+    const game = new BowlingGame();
+    rollAStrike(game);
+    rollContinouslyFor(game, 1, 18);
+
+    expect(game.getScore()).toBe(30);
   });
 });
 
