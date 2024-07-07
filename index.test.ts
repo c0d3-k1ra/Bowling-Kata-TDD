@@ -32,6 +32,15 @@ describe("Bowling Kata", () => {
     
     expect(game.getScore()).toBe(29);
   });
+
+  test('All spares', () => {
+    const game = new BowlingGame();
+    rollContinouslyFor(game, 5, 20);
+    //Additional roll
+    rollContinouslyFor(game, 5, 1);
+    
+    expect(game.getScore()).toBe(150);
+  });
 });
 
 

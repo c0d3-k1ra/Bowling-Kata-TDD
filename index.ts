@@ -23,7 +23,7 @@ class BowlingGame {
   }
 
   private isSpare(rollIndex: number): boolean {
-    return this.rolls[rollIndex] + this.rolls[rollIndex + 1] == 10;
+    return this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10;
   }
 
   private bonusForSpare(rollIndex: number): number {
